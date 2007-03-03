@@ -1,0 +1,205 @@
+#!/bin/bash
+#
+. /etc/rc.d/rc.lapenv.conf
+#
+#
+#-----------------------
+# perhaps you have network interface which you want to have 
+# Static ip address , define them here ( JUST uncomment this if 
+# Really have another interface )
+# eth1 ip address , change <IP> and <NET-MASK> and uncomment .
+# /sbin/ifconfig eth1 <IP> netmask <NET-MASK> up
+# eth1 gateway , change <GATE>
+# /sbin/route add -host <GATE> eth1 and uncomment .
+# /sbin/route add default gateway <GATE> eth1
+#-----------------------Configuration End-----------------------
+/sbin/ifconfig lo 127.0.0.1
+/sbin/route add -net 127.0.0.0 netmask 255.0.0.0 lo
+function e1 {
+/sbin/ifconfig $eth down 
+/sbin/ifconfig $eth $e1ip netmask $e1mask up 
+if [ "$e1gate" = "" ]; then lapend
+else 
+er1
+fi 
+}
+function er1 {
+/sbin/route add -host $e1gate $eth 2> /dev/null
+/sbin/route add default gateway $e1gate 2>/dev/null
+lapend
+}
+function e2 { 
+/sbin/ifconfig $eth down
+/sbin/ifconfig $eth $e2ip netmask $e2mask up
+if [ "$e2gate" = "" ]; then lapend
+else er2
+fi 
+}
+function er2 { 
+/sbin/route add -host $e2gate $eth 2> /dev/null
+/sbin/route add default gateway $e2gate 2> /dev/null
+lapend
+}
+function e3 {
+/sbin/ifconfig $eth down
+/sbin/ifconfig $eth $e3ip netmask $e3mask up
+if [ "$e3gate" = "" ]; then lapend
+else er3
+fi 
+}
+function er3 {
+/sbin/route add -host $e3gate $eth 2> /dev/null
+/sbin/route add default gateway $e3gate 2> /dev/null
+lapend
+}
+function e4 {
+/sbin/ifconfig $eth down 
+/sbin/ifconfig $eth $e4ip netmask $e1mask up 
+if [ "$e4gate" = "" ]; then lapend
+else er4
+fi
+}
+function er4 { 
+/sbin/route add -host $e4gate $eth 2> /dev/null
+/sbin/route add default gateway $e4gate 2>/dev/null
+lapend
+}
+function e5 { 
+/sbin/ifconfig $eth down
+/sbin/ifconfig $eth $e5ip netmask $e5mask up
+if [ "$e5gate" = "" ]; then lapend
+else er5
+fi
+}
+function er5 {  
+/sbin/route add -host $e5gate $eth 2> /dev/null
+/sbin/route add default gateway $e5gate 2> /dev/null
+lapend
+}
+function e6 {
+/sbin/ifconfig $eth down
+/sbin/ifconfig $eth $e6ip netmask $e6mask up
+if [ "$e6gate" = "" ]; then lapend
+else er6
+fi 
+}
+function er6 {
+/sbin/route add -host $e6gate $eth 2> /dev/null
+/sbin/route add default gateway $e6gate 2> /dev/null
+lapend
+}
+function e7 {
+/sbin/dhcpcd
+}
+function lapend {
+echo "Lapenv 1.1 operation successful ($choice)"
+}
+function d1 {
+
+dialog --help-button --help-label "Info" --no-kill --colors --tab-len 2 --no-shadow --backtitle "\Zb\Z6Lapenv 1.1 - http://lapenv.sourceforge.net" --title "\Zb\Z4Environment Selector" --menu "\Zb\Z7 Welcome , Please Select your Environment :" 20 51 13 "$e1"  "\Zb\Z2$ed1" "Dhcp"  "\Zb\Z2Use Dhcp server" 2> /tmp/menu.tmp.$$
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
+}
+function d2 {
+dialog --help-button --help-label "Info" --no-kill --colors --tab-len 2 --no-shadow --backtitle "\Zb\Z6Lapenv 1.1 - http://lapenv.sourceforge.net" --title "\Zb\Z4Environment Selector" --menu "\Zb\Z7 Welcome , Please Select your Environment :" 20 51 13 "$e1"  "\Zb\Z2$ed1" "$e2" "\Zb\Z2$ed2" "Dhcp"  "\Zb\Z2Use Dhcp server" 2> /tmp/menu.tmp.$$
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
+}
+function d3 {
+dialog --help-button --help-label "Info" --no-kill --colors --tab-len 2 --no-shadow --backtitle "\Zb\Z6Lapenv 1.1 - http://lapenv.sourceforge.net" --title "\Zb\Z4Environment Selector" --menu "\Zb\Z7 Welcome , Please Select your Environment :" 20 51 13 "$e1"  "\Zb\Z2$ed1" "$e2" "\Zb\Z2$ed2" "$e3" "\Zb\Z2$ed3" "Dhcp"  "\Zb\Z2Use Dhcp server" 2> /tmp/menu.tmp.$$
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
+}
+function d4 {
+dialog --help-button --help-label "Info" --no-kill --colors --tab-len 2 --no-shadow --backtitle "\Zb\Z6Lapenv 1.1 - http://lapenv.sourceforge.net" --title "\Zb\Z4Environment Selector" --menu "\Zb\Z7 Welcome , Please Select your Environment :" 20 51 13 "$e1"  "\Zb\Z2$ed1" "$e2" "\Zb\Z2$ed2" "$e3" "\Zb\Z2$ed3" "$e4" "\Zb\Z2$ed4" "Dhcp"  "\Zb\Z2Use Dhcp server" 2> /tmp/menu.tmp.$$
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
+}
+function d5 {
+dialog --help-button --help-label "Info" --no-kill --colors --tab-len 2 --no-shadow --backtitle "\Zb\Z6Lapenv 1.1 - http://lapenv.sourceforge.net" --title "\Zb\Z4Environment Selector" --menu "\Zb\Z7 Welcome , Please Select your Environment :" 20 51 13 "$e1"  "\Zb\Z2$ed1" "$e2" "\Zb\Z2$ed2" "$e3" "\Zb\Z2$ed3" "$e4" "\Zb\Z2$ed4" "$e5" "\Zb\Z2$ed5"  "Dhcp"  "\Zb\Z2Use Dhcp server" 2> /tmp/menu.tmp.$$
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
+}
+function d6 {
+dialog --help-button --help-label "Info" --no-kill --colors --tab-len 2 --no-shadow --backtitle "\Zb\Z6Lapenv 1.1 - http://lapenv.sourceforge.net" --title "\Zb\Z4Environment Selector" --menu "\Zb\Z7 Welcome , Please Select your Environment :" 20 51 13 "$e1"  "\Zb\Z2$ed1" "$e2" "\Zb\Z2$ed2" "$e3" "\Zb\Z2$ed3" "$e4" "\Zb\Z2$ed4" "$e5" "\Zb\Z2$ed5" "$e6" "\Zb\Z2$ed6"  "Dhcp"  "\Zb\Z2Use Dhcp server" 2> /tmp/menu.tmp.$$
+retval=$?
+choice=`cat /tmp/menu.tmp.$$`
+rm -f /tmp/menu.tmp.$$
+}
+function ie1 {
+dialog --backtitle "$e1 Information" --title "$e1 Environment information" --clear --msgbox "
+Ip-Addr : "$e1ip"
+NetMask : "$e1mask"  
+Gateway : "$e1gate" " 9 40
+lapenv
+}
+function ie2 {
+dialog --backtitle "$e2 Information" --title "$e2 Environment information" --clear --msgbox "
+Ip-Addr : "$e2ip"
+NetMask : "$e2mask"  
+Gateway : "$e2gate" " 9 40
+lapenv
+}
+function ie3 {
+dialog --backtitle "$e3 Information" --title "$e3 Environment information" --clear --msgbox "
+Ip-Addr : "$e3ip"
+NetMask : "$e3mask"  
+Gateway : "$e3gate" " 9 50
+lapenv
+}
+function ie4 {
+dialog --backtitle "$e4 Information" --title "$e4 Environment information" --clear --msgbox "
+Ip-Addr : "$e4ip"
+NetMask : "$e4mask"  
+Gateway : "$e4gate" " 9 50
+lapenv
+}
+function ie5 {
+dialog --backtitle "$e5 Information" --title "$e5 Environment information" --clear --msgbox "
+Ip-Addr : "$e5ip"
+NetMask : "$e5mask"  
+Gateway : "$e5gate" " 9 50
+lapenv
+}
+function ie6 {
+dialog --backtitle "$e6 Information" --title "$e6 Environment information" --clear --msgbox "
+Ip-Addr : "$e6ip"
+NetMask : "$e6mask"  
+Gateway : "$e6gate" " 9 50
+lapenv
+}
+function ie7 {
+dialog --backtitle "Dhcp Information" --title "Dhcp Environment information" --clear --msgbox "this option runs dhcpcd , the dhcp client ." 5 50
+lapenv
+}
+
+if   [ "$enum" = "1" ]; then d1 
+elif [ "$enum" = "2" ]; then d2
+elif [ "$enum" = "3" ]; then d3
+elif [ "$enum" = "4" ]; then d4 
+elif [ "$enum" = "5" ]; then d5
+elif [ "$enum" = "6" ]; then d6
+else d2 
+fi
+if   [ "$choice" = "$e1" ]; then e1 
+elif [ "$choice" = "$e2" ]; then e2
+elif [ "$choice" = "$e3" ]; then e3
+elif [ "$choice" = "$e4" ]; then e4 
+elif [ "$choice" = "$e5" ]; then e5
+elif [ "$choice" = "$e6" ]; then e6
+elif [ "$choice" = "Dhcp" ]; then e7
+elif [ "$choice" = "HELP $e1" ]; then ie1 
+elif [ "$choice" = "HELP $e2" ]; then ie2
+elif [ "$choice" = "HELP $e3" ]; then ie3
+elif [ "$choice" = "HELP $e4" ]; then ie4 
+elif [ "$choice" = "HELP $e5" ]; then ie5
+elif [ "$choice" = "HELP $e6" ]; then ie6
+elif [ "$choice" = "HELP Dhcp" ]; then ie7
+else 
+echo "Aborted!!"
+fi

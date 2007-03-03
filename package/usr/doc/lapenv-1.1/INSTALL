@@ -1,0 +1,16 @@
+Installation is easy , just install package with installpkg command . 
+
+$shell>installpkg lapenv-xxxxxx.tgz 
+then edit /etc/rc.d/rc.lapenv file , if you got problem , check /etc/rc.d/rc.S file , must looks like this :
+
+#!/bin/bash
+#/etc/rc.d/rc.S
+#
+[...]
+lapenv
+
+##################
+big fat note :   
+it is really recommended to :
+$shell>chmod 0 /etc/rc.d/rc.inet1 
+##################
