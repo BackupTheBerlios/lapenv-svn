@@ -1,0 +1,12 @@
+lapenv: Lapenv 1.1 Network Environment Selector!
+lapenv:  
+lapenv: it is recommended to disable normal slackware 
+lapenv: network configurator by :
+lapenv: chmod 0 /etc/rc.d/rc.inet1
+lapenv: 
+lapenv: this will prevent ip confilict until lapenv starts .
+lapenv: configuraion file is : /etc/rc.d/rc.lapenv.conf
+lapenv: lapenv by default started by /etc/rc.d/rc.local , besure 
+lapenv: to end it by and EOF before lapenv .  
+lapenv: http://lapenv.sourceforge.net
+lapenv: Package Created By: Armin (Zoup@zoup.org)

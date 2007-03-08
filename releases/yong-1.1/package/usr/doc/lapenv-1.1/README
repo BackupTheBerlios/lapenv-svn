@@ -1,0 +1,44 @@
+Lapenv 1.1 README File
+=============================================================
+
+Lapenv allow you to specify and run many different network environment on single computer , 
+allow you to change ip address , net mask and gateway in a second .
+in fact , Lapenv started by rc.S and will run different scripts for different environments . 
+
+/etc/rc.d/rc.lapenv.conf is the configuration file , the format is simple :
+
+
+here you must specify your nic name , typically eth0 
+#Your Network Interface :
+eth="eth0"
+
+number of environment that you have  (number of menu appears in lapenv) . 
+#Number of Environment That you have (1-6)
+enum="2"
+#
+
+short name of environment 
+# Environment 1 Short name :
+e1="Office"
+
+Description of environment 
+# Environment 1 Description :
+ed1="My Office"
+
+ip address of environment 
+# Environment 1 IP Address :
+e1ip="1.1.1.1"
+
+
+net-mask of environment 
+# Environment 1 Net-Mask :
+e1mask="255.0.0.0"
+
+and the gateway , leave it blank if you don't have gateway .
+# Environment 1 Gateway :
+e1gate=""
+
+
+Contact : 
+http://lapenv.sourceforge.net 
+Armin ranjbar , Zoup@zoup.org
